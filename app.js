@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const Project = require('./models/Project'); // Import Project model
 const WorkExperience = require('./models/WorkExperience'); // Import WorkExperience model
+const cors = require('cors');
 
 // Load environment variables
 dotenv.config();
@@ -24,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true })); // Parse form data
 app.use(express.json()); // Parse JSON data
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+app.use(cors());
 
 // Routes
 app.use('/api/projects', require('./routes/api/projects'));
